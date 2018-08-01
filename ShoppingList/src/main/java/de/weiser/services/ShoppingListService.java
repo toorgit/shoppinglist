@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import de.weiser.model.ShoppingList;
 import de.weiser.model.ShoppingListItem;
@@ -47,12 +48,14 @@ public class ShoppingListService {
 
   }
 
+  @Transactional
   public void addItem(int id, ShoppingListItem item) {
     ShoppingList shoppingList = getShoppingList(id);
     item.setShoppingList(shoppingList);
-    itemRepository.save(item);
 
-    shoppingList.addListItem(item);
+    ShoppingListItem sItem = itemRepository.save(item);
+
+    shoppingList.addListItem(sItem);
     // shoppingList.addListItem(item);
     repository.save(shoppingList);
 
