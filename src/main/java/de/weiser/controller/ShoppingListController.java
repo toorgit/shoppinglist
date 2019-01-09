@@ -1,18 +1,19 @@
 package de.weiser.controller;
 
-import java.util.List;
-
+import de.weiser.model.ShoppingList;
+import de.weiser.model.ShoppingListItem;
+import de.weiser.services.ShoppingListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.weiser.model.ShoppingList;
-import de.weiser.model.ShoppingListItem;
-import de.weiser.services.ShoppingListService;
+import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ShoppingListController {
 
